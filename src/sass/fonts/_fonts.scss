@@ -1,0 +1,22 @@
+@import "../utils/mixins";
+
+// =============================================================================
+// Google Fonts
+// =============================================================================
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto:400,400i,700,700i&display=swap');
+
+// =============================================================================
+// Font Face
+// =============================================================================
+// Circe
+// ----------------------------------------------------
+@include font-face("circe-regular", "../fonts/Circe-Regular", normal, normal, ttf);
+@include font-face("circe-bold", "../fonts/Circe-Bold", normal, normal, ttf);
+@include font-face("circe-extra-bold", "../fonts/Circe-ExtraBold", normal, normal, ttf);
+
+// Avenir Next
+// ----------------------------------------------------
+@include font-face("avenir-roman", "../fonts/Avenir-Roman", normal, normal, ttf);
+@include font-face("avenir-next-cyr-bold", "../fonts/AvenirNextCyr-Bold", normal, normal, ttf);
+@include font-face("avenir-next-cyr-demi", "../fonts/AvenirNextCyr-Demi", normal, normal, ttf);
+@include font-face("avenir-next-cyr-medium", "../fonts/AvenirNextCyr-Medium", normal, normal, ttf);
