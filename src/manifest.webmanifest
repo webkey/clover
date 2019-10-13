@@ -1,7 +1,7 @@
 {
-  "name": "Site",
-  "short_name": "Site",
-  "description": "Site",
+  "name": "Clover Nikhola Khlusov Studio",
+  "short_name": "Clover Nikhola Khlusov Studio",
+  "description": "Clover Nikhola Khlusov Studio",
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#fff",
@@ -10,6 +10,16 @@
       "src": "apple-touch-icon.png",
       "type": "image/png",
       "sizes": "256x256"
+    },
+    {
+      "src": "favicon.ico",
+      "type": "icon/ico",
+      "sizes": "16x16"
+    },
+    {
+      "src": "share.jpg",
+      "type": "image/jpg",
+      "sizes": "1200x630"
     }
   ]
 }

@@ -1,19 +1,98 @@
+var $WINDOW = $(window),
+    $HTML = $('html'),
+    $BODY = $('body');
+
 /**
  * !Detects overlay scrollbars (when scrollbars on overflowed blocks are visible).
  * This is found most commonly on mobile and OS X.
  * */
 var HIDDEN_SCROLL = Modernizr.hiddenscroll;
 var NO_HIDDEN_SCROLL = !HIDDEN_SCROLL;
+var TOUCHEVENTS = ("ontouchstart" in document.documentElement);
 
 /**
  * !Add touchscreen classes
  * */
 function addTouchClasses() {
-  if (!("ontouchstart" in document.documentElement)) {
-    document.documentElement.className += " no-touchevents";
-  } else {
+  if (TOUCHEVENTS) {
     document.documentElement.className += " touchevents";
+  } else {
+    document.documentElement.className += " no-touchevents";
   }
+}
+
+/**
+ * !Initial full page scroll plugin
+ * */
+function fullPageInitial() {
+  var $fpSections = $('.fp-sections-js'),
+      fpSectionSelector = '.fp-section-js',
+      $fpSection = $(fpSectionSelector),
+      $word = $('.menu-item__bg-text', $fpSections).find('span'),
+      parallaxValue = 0.8,
+      duration = 600,
+      breakpointWidth = 992,
+      breakpointHeight = 400;
+
+  function historyAnchors() {
+    var anchors = [];
+
+    $.each($fpSection, function (i, el) {
+      anchors.push('section' + (i + 1));
+    });
+
+    return anchors;
+  }
+
+  if($fpSections.length) {
+    $fpSections.fullpage({
+      css3: true,
+      licenseKey: '11111111-11111111-11111111-11111111',
+      verticalCentered: false,
+      anchors: historyAnchors(),
+      recordHistory: false,
+      scrollingSpeed: duration,
+      sectionSelector: fpSectionSelector,
+      responsiveWidth: breakpointWidth, // and add css rule .fp-enabled
+      responsiveHeight: breakpointHeight, // and add css rule .fp-enabled
+      navigation: false,
+      onLeave: function (origin, destination, direction) {
+        if (window.innerWidth >= breakpointWidth && window.innerHeight >= breakpointHeight) {
+          // console.log("destination: ", breakpointWidth);
+          var $spaceTop = destination.item.offsetTop + destination.item.clientHeight - window.innerHeight;
+          var scrollValue = $spaceTop * parallaxValue;
+
+          if ($word.length) {
+            $word.css({
+              'transform': 'translate3d(' + scrollValue + 'px, 0px, 0px)',
+              'transition': 'all ' + duration / 1000 + 's'
+            });
+          }
+        }
+      },
+      afterLoad: function(origin, destination, direction){
+        $('.logo-js').on('click', function (e) {
+          fullpage_api.moveTo(1);
+          e.preventDefault();
+        })
+      },
+    });
+  }
+
+  $('.btn-next-section-js').on('click', function (e) {
+    if($fpSections.length) {
+      fullpage_api.moveSectionDown();
+    }
+    e.preventDefault();
+  });
+
+  $('.btn-to-section-js').on('click', function (e) {
+    var $thisBtn = $(this);
+    if($fpSections.length) {
+      fullpage_api.moveTo($($thisBtn.attr('href')).index() + 1);
+    }
+    e.preventDefault();
+  });
 }
 
 /**
@@ -69,9 +148,58 @@ function customSelect() {
         dropdownCssClass: 'cselect-drop'
       });
     })
-
   }
 }
+
+/**
+ * !Main navigation
+ */
+function mainNavigation() {
+  var $nav = $('.nav-js');
+  if ($nav.length) {
+
+    $nav.nav({
+      submenuPosition: false,
+    });
+  }
+}
+
+$('.nav-opener-js').on('click', function (e) {
+  var $curBtn = $(this);
+
+  $curBtn.add($($curBtn.attr('href'))).addClass('is-open');
+
+  $HTML.addClass('css-scroll-fixed open-only-mob');
+
+  e.preventDefault();
+});
+
+function hideNav() {
+  $('.is-open').removeClass('is-open');
+  $HTML.removeClass('css-scroll-fixed open-only-mob');
+}
+
+$('.nav-close-btn-js').on('click', function (e) {
+  hideNav();
+
+  e.preventDefault();
+});
+
+$('.nav-overlay').on('click', function () {
+  hideNav();
+});
+
+$HTML.keyup(function (event) {
+  if (event.keyCode === 27) {
+    hideNav();
+  }
+});
+
+
+
+
+
+
 
 /**
  * !Form validation
@@ -131,11 +259,15 @@ $(window).on('debouncedresize', function () {
 });
 
 $(document).ready(function () {
+  // Base
   addTouchClasses();
+  fullPageInitial();
   placeholderInit();
   formElementState();
   customSelect();
   objectFitImages(); // object-fit-images initial
+  // Common
+  mainNavigation();
 
   formValidation();
 });

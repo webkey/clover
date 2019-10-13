@@ -281,13 +281,14 @@ $highlight-color: $base-color !default
 $highlight-color--hover: scale-color($highlight-color, $saturation: 100%) !default
 // ----------------------------------------------------
 $bg-color: #fff !default;
-$bg-color-alt: #f3f3f3 !default;
+$bg-color-alt: #e8e8e8 !default;
 // ----------------------------------------------------
-$text-color: #262626 !default;
+$text-color: #3f3f3f !default;
+$text-color-invert: white !default;
 $text-color-muted: #6c757d !default;
 $text-color-light: #ccc !default;
 // ----------------------------------------------------
-$title-color: #ee6e73 !default;
+$title-color: #000 !default;
 // ----------------------------------------------------
 $border-color: #ccc !default;
 // ----------------------------------------------------
@@ -612,6 +613,8 @@ $animation-speed-mouseleave: 0.35s !default;
 
 // Header
 // ====================================================
+$nav-height: 7rem !default;
+$nav-height--mob: 6rem !default;
 
 
 // Footer
