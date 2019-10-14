@@ -134,7 +134,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
         open = function ($panel) {
           if (!$panel.length) return;
 
-          console.log('>>>open<<<');
+          // console.log('>>>open<<<');
 
           // Вторым аргументо передать функцию обратного вызова
           var callback = arguments[1];
@@ -217,7 +217,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
           });
         },
         closePanel = function ($panel) {
-          console.log('>>>close<<<');
+          // console.log('>>>close<<<');
           var callback = arguments[1];
 
           // Удалить активный класс со всех элементов
@@ -489,7 +489,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
           $.each(el, function () {
             var el = $(this);
             var parent = el.closest(config.item);
-            console.log("at: ", at);
+            // console.log("at: ", at);
             el.position({
               my: "left top",
               at: at,
@@ -592,7 +592,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
             _classIsAdded = true;
 
             $element.trigger('nav.afterHover', $item);
-            console.log("~~ class hover added: ", $item);
+            // console.log("~~ class hover added: ", $item);
           }
         },
         removeClassesFrom = function () {
@@ -612,7 +612,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
             _classIsAdded = false;
 
             $element.trigger('nav.afterLeave', $item);
-            console.log("~~ class hover removed: ", $item);
+            // console.log("~~ class hover removed: ", $item);
           }
         },
         /*Immediate add and remove classes*/
@@ -686,7 +686,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
             if (resizeByWidth) {
               removeClassesFrom($(config.item, $element).filter('.' + config.modifiers.hover));
 
-              console.log('%c >>>remove by WIDTH RESIZE<<<', 'background-color: #00f1ff; color: #ff1515');
+              // console.log('%c >>>remove by WIDTH RESIZE<<<', 'background-color: #00f1ff; color: #ff1515');
               // $(window).trigger('resizeByWidth');
               prevWidth = currentWidth;
             }
@@ -697,7 +697,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
 
             if (!_classIsAdded || $(event.target).closest($(config.item)).length) return;
 
-            console.log('%c >>>remove by click OUTSIDE<<<', 'background-color: #00f1ff; color: #ff1515');
+            // console.log('%c >>>remove by click OUTSIDE<<<', 'background-color: #00f1ff; color: #ff1515');
 
             forceRemoveClassFrom();
           });
@@ -706,7 +706,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
           $html.keyup(function (event) {
             if (_classIsAdded && event.keyCode === 27) {
 
-              console.log('%c >>>remove by click ESC<<< ', 'background-color: #00f1ff; color: #ff1515');
+              // console.log('%c >>>remove by click ESC<<< ', 'background-color: #00f1ff; color: #ff1515');
 
               forceRemoveClassFrom();
             }
@@ -725,7 +725,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
               .off('touchend mouseenter mouseleave', config.item)
               .on('touchend mouseenter mouseleave', config.item, function (e) {
 
-                console.log('%c ~~~' + e.handleObj.origType + '~~~ ', 'background: #222; color: #bada55');
+                // console.log('%c ~~~' + e.handleObj.origType + '~~~ ', 'background: #222; color: #bada55');
 
                 var $curItem = $(this);
 
@@ -748,7 +748,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
                 // События на TOUCHEND (для тачскринов)
                 // ====================================================
                 if (e.handleObj.origType === "touchend" && !config.arrowEnable) {
-                  console.log('%c >>>touchend<<< ', 'background: #222; color: #bada55');
+                  // console.log('%c >>>touchend<<< ', 'background: #222; color: #bada55');
 
                   if (!$curItem.prop('isActive')) {
                     // Если пункт НЕАКТИВЕН
@@ -784,7 +784,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
                 // События на ВВОД курсора
                 // ====================================================
                 if (e.handleObj.origType === "mouseenter") {
-                  console.log('%c >>>mouseenter<<< ', 'background: #222; color: #bada55');
+                  // console.log('%c >>>mouseenter<<< ', 'background: #222; color: #bada55');
 
                   // Перед добавлением класса
                   // ОТМЕНЯЕМ УДАЛЕНИЕ класса С ЗАДЕРЖКОЙ c текущего пункта.
@@ -820,7 +820,7 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
                 // События на ВЫВОД курсора
                 // ====================================================
                 if (e.handleObj.origType === "mouseleave") {
-                  console.log('%c >>>mouseleave<<< ', 'background: #222; color: #bada55');
+                  // console.log('%c >>>mouseleave<<< ', 'background: #222; color: #bada55');
 
                   // Перед удалением класса нужно
                   // ОТМЕНИТЬ ДОБАВЛЕНИЕ класса С ЗАДЕРЖКОЙ c текущего пункта,
@@ -855,9 +855,9 @@ var objectFitImages=function(){"use strict";function t(t,e){return"data:image/sv
                 // ====================================================
                 if (config.onlyHasDrop && !$curItem.has(config.drop).length) return;
 
-                console.log('%c >>>arrow click<<< ', 'background: #222; color: #bada55');
+                // console.log('%c >>>arrow click<<< ', 'background: #222; color: #bada55');
 
-                console.log("$curItem.prop('isActive'): ", $curItem.prop('isActive'));
+                // console.log("$curItem.prop('isActive'): ", $curItem.prop('isActive'));
                 if (!$curItem.prop('isActive')) {
                   // Если пункт НЕАКТИВЕН
                   // ====================================================

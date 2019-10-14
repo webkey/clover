@@ -30,7 +30,7 @@ function fullPageInitial() {
       $fpSection = $(fpSectionSelector),
       $word = $('.menu-item__bg-text', $fpSections).find('span'),
       parallaxValue = 0.8,
-      duration = 600,
+      duration = 750,
       breakpointWidth = 992,
       breakpointHeight = 400;
 
@@ -57,8 +57,9 @@ function fullPageInitial() {
       responsiveHeight: breakpointHeight, // and add css rule .fp-enabled
       navigation: false,
       onLeave: function (origin, destination, direction) {
+        $(destination.item).addClass('s-ready');
+
         if (window.innerWidth >= breakpointWidth && window.innerHeight >= breakpointHeight) {
-          // console.log("destination: ", breakpointWidth);
           var $spaceTop = destination.item.offsetTop + destination.item.clientHeight - window.innerHeight;
           var scrollValue = $spaceTop * parallaxValue;
 
@@ -68,6 +69,26 @@ function fullPageInitial() {
               'transition': 'all ' + duration / 1000 + 's'
             });
           }
+        }
+
+        // Добавлять класс светлой темы
+        $HTML.removeClass('theme-light');
+
+        if (!$HTML.hasClass('theme-light') && $(destination.item).attr('data-theme') === "light") {
+          $HTML.addClass('theme-light');
+        }
+
+        // Менять цвет фона
+        var bgColor = $(destination.item).attr('data-bg-color');
+        if (bgColor && bgColor.length) {
+          $BODY.css('background-color', bgColor);
+        } else {
+          $BODY.css('background-color', '');
+        }
+
+        if(destination.isLast) {
+          console.log("$(destination.item).eq(3): ", $(destination.item));
+          $BODY.css('background-color', $(destination.item).prev().attr('data-bg-color'));
         }
       },
       afterLoad: function(origin, destination, direction){

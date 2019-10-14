@@ -25,6 +25,7 @@ body {
   line-height: $line-height;
   color: $text-color;
   background: $bg-color url(../../img/empty.png) no-repeat left top fixed;
+  transition: color 0.7s, background-color 0.7s;
 
   // ------ mob -----------------------------------------
   @include media('<mob') {
