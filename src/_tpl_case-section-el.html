@@ -1,0 +1,38 @@
+<div class="case-section__layout">
+  <div class="layout-page layout-page-spaces">
+    <div class="case-section__align">
+      <div class="case-section__caption">
+        @@if(context.count) {<div class="case-section__count">@@count</div>}
+        @@if(context.title) {
+          <h2 class="case-section__title">
+          @@for (var i = 0; i < title.length; i++) {
+            <span class="ct">
+              <span class="ct__inner">`+title[i]+`</span>
+            </span>
+            }
+          </h2>
+        }
+      </div>
+      <div class="case-section__description">
+        @@if(context.subTitle) {
+          <h3 class="case-section__sub-title">
+            @@for (var i = 0; i < subTitle.length; i++) {
+            <span class="ct">
+              <span class="ct__inner">`+subTitle[i]+`</span>
+            </span>
+            }
+          </h3>
+          <a href="#" class="case-section__more"><span class="case-section__more-text">See details</span><em class="case-section__more-arrow"></em></a>
+        }
+      </div>
+      <div class="case-section__figure">
+        <div class="case-section__figure-bg">
+          <div class="case-section__figure-bg-shade"></div>
+        </div>
+        @@if(context.imgSrc) {<img src="@@imgSrc" alt="image description" />}
+        @@if(context.imgSrc2) {<img src="@@imgSrc2" alt="image description" />}
+      </div>
+    </div>
+  </div>
+</div>
+
