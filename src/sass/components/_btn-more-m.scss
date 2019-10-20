@@ -1,0 +1,129 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+.btn-more-m {
+  position: relative;
+  display: inline-block;
+  @include font-alt-bold;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: inherit;
+  padding: 0.2rem 0.2rem 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 95%;
+    bottom: 0;
+    height: 0.5rem;
+    width: 55%;
+    background-color: currentColor;
+    $prop: transform;
+    will-change: $prop;
+    transition: {
+      property: $prop;
+      duration: 0.5s;
+      timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+    transform-origin: bottom left;
+    $scale: 0, 1;
+    transform: scale($scale);
+    transform: scale3d($scale, 1);
+  }
+}
+
+.btn-more-m__line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.5rem;
+    background-color: currentColor;
+    $prop: transform;
+    will-change: $prop;
+    transition: {
+      property: $prop;
+      duration: 0.5s;
+      delay: 1.2s;
+      timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+    $translate: -102%, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+
+    .s-ready & {
+      $translate: 0, 0;
+      $translate: 0, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+  }
+}
+
+.btn-more-m__text {
+  display: block;
+  overflow: hidden;
+  transition: color 0.5s;
+  $prop: transform;
+  will-change: $prop;
+  transition: {
+    property: $prop;
+    duration: 0.4s;
+    timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+  }
+}
+
+.btn-more-m__text-inner {
+  display: block;
+  position: relative;
+  @include antialiased;
+  $prop: transform;
+  will-change: $prop;
+  transition: {
+    property: $prop;
+    duration: 0.6s;
+    delay: 1.4s;
+    timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+  }
+  $translate: 0, 120%;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
+
+  .s-ready & {
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+}
+
+// Hover
+.btn-more-m {
+  .no-touchevents &:hover {
+    .btn-more-m__text {
+      $translate: 0, -20%;
+      $scale: 1, 1;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+
+    &::before {
+      $scale: 1, 1;
+      transform: scale($scale);
+      transform: scale3d($scale, 1);
+    }
+  }
+}

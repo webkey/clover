@@ -53,12 +53,12 @@ $font-italic: $font-norm !default;
 
 // Alternative font
 // ----------------------------------------------------
-$font-alt: "circe-regular", Helvetica, Arial, sans-serif !default;
+$font-alt-normal: "circe-regular", Helvetica, Arial, sans-serif !default;
 $font-alt-bold: "circe-bold", Helvetica, Arial, sans-serif !default;
 $font-alt-extra-bold: "circe-extra-bold", Helvetica, Arial, sans-serif !default;
 
-@mixin font-alt {
-  font-family: $font-alt;
+@mixin font-alt-normal {
+  font-family: $font-alt-normal;
 }
 
 @mixin font-alt-bold {
@@ -73,38 +73,38 @@ $font-alt-extra-bold: "circe-extra-bold", Helvetica, Arial, sans-serif !default;
 
 // Title font
 // ----------------------------------------------------
-$font-title: "avenir-roman", Helvetica, Arial, sans-serif !default;
+$font-title-normal: "avenir-roman", Helvetica, Arial, sans-serif !default;
 $font-title-bold: "avenir-next-cyr-bold", Helvetica, Arial, sans-serif !default;
 $font-title-demi: "avenir-next-cyr-demi", Helvetica, Arial, sans-serif !default;
 $font-title-medium: "avenir-next-cyr-medium", Helvetica, Arial, sans-serif !default;
 
-@mixin font-title {
-  font-family: $font-title;
+@mixin font-caption-normal {
+  font-family: $font-title-normal;
 }
 
-@mixin font-title-bold {
+@mixin font-caption-bold {
   font-family: $font-title-bold;
   font-weight: normal;
 }
 
-@mixin font-title-demi {
+@mixin font-caption-demi {
   font-family: $font-title-demi;
   font-weight: normal;
 }
 
-@mixin font-title-medium {
+@mixin font-caption-medium {
   font-family: $font-title-medium;
   font-weight: normal;
 }
 
 // Important font
 // ----------------------------------------------------
-$font-important: "Montserrat", Helvetica, Arial, sans-serif !default;
-$font-important-bold: $font-important !default;
-$font-important-semi-bold: $font-important !default;
+$font-important-normal: "Montserrat", Helvetica, Arial, sans-serif !default;
+$font-important-semi-bold: $font-important-normal !default;
+$font-important-bold: $font-important-normal !default;
 
-@mixin font-important {
-  font-family: $font-important;
+@mixin font-important-normal {
+  font-family: $font-important-normal;
   font-weight: 400;
 }
 
@@ -619,3 +619,10 @@ $nav-height--mob: 6rem !default;
 
 // Footer
 // ====================================================
+
+
+// Content
+// ====================================================
+$bg-word-width: 19rem !default;
+
+$section-space: 14rem 0 3rem !default;

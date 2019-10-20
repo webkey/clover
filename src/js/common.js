@@ -11,6 +11,16 @@ var NO_HIDDEN_SCROLL = !HIDDEN_SCROLL;
 var TOUCHEVENTS = ("ontouchstart" in document.documentElement);
 
 /**
+ * Change font size on resize
+ */
+function changeFontSize() {
+  var step = 0.0434, fontSize;
+  fontSize = window.innerWidth * step;
+  $HTML.css('font-size', fontSize + '%');
+}
+changeFontSize();
+
+/**
  * !Add touchscreen classes
  * */
 function addTouchClasses() {
@@ -28,8 +38,8 @@ function fullPageInitial() {
   var $fpSections = $('.fp-sections-js'),
       fpSectionSelector = '.fp-section-js',
       $fpSection = $(fpSectionSelector),
-      $word = $('.menu-item__bg-text', $fpSections).find('span'),
-      parallaxValue = 0.8,
+      $word = $('.js-word-bg .wbg__word'),
+      parallaxValue = 0.2,
       duration = 750,
       breakpointWidth = 992,
       breakpointHeight = 400;
@@ -42,6 +52,14 @@ function fullPageInitial() {
     });
 
     return anchors;
+  }
+
+  function sectionReady(destination) {
+    var $section = $(destination.item);
+    $section.addClass('s-ready');
+    if(destination.isLast) {
+      $section.prev().addClass('s-ready');
+    }
   }
 
   if($fpSections.length) {
@@ -57,11 +75,11 @@ function fullPageInitial() {
       responsiveHeight: breakpointHeight, // and add css rule .fp-enabled
       navigation: false,
       onLeave: function (origin, destination, direction) {
-        $(destination.item).addClass('s-ready');
+        sectionReady(destination);
 
         if (window.innerWidth >= breakpointWidth && window.innerHeight >= breakpointHeight) {
           var $spaceTop = destination.item.offsetTop + destination.item.clientHeight - window.innerHeight;
-          var scrollValue = $spaceTop * parallaxValue;
+          var scrollValue = -$spaceTop * parallaxValue;
 
           if ($word.length) {
             $word.css({
@@ -87,11 +105,11 @@ function fullPageInitial() {
         }
 
         if(destination.isLast) {
-          console.log("$(destination.item).eq(3): ", $(destination.item));
           $BODY.css('background-color', $(destination.item).prev().attr('data-bg-color'));
         }
       },
       afterLoad: function(origin, destination, direction){
+        sectionReady(destination);
         $('.logo-js').on('click', function (e) {
           fullpage_api.moveTo(1);
           e.preventDefault();
@@ -216,6 +234,44 @@ $HTML.keyup(function (event) {
   }
 });
 
+/**
+ * !Main menu toggle active class
+ */
+function toggleActiveMenuItem() {
+  var $menu = $('.js-menu');
+  var $menuItem = $('.js-menu-item');
+  var $wordBg = $('.js-word-bg');
+  var activeClass = 'm-active';
+
+  if ($menu.length) {
+    if (!$menu.has('.' + activeClass).length) {
+      $menuItem.eq(0).addClass(activeClass);
+    }
+
+    $menu.on('mouseenter touchend', '.js-menu-anchor', function (e) {
+      if (window.innerWidth < 992) return;
+
+      var $curAnchor = $(this);
+      var $curItem = $curAnchor.closest($menuItem);
+
+      if (e.handleObj.origType === 'touchend') {
+        if (!$curItem.hasClass(activeClass)) {
+          e.preventDefault();
+        }
+      }
+
+      if ($curItem.hasClass(activeClass)) return;
+
+      var $allItems = $curAnchor.closest($menu).find($menuItem);
+      var index = $curItem.index();
+      var $curWordBg = $wordBg.eq(index);
+
+      $allItems.add($wordBg).removeClass(activeClass);
+      $curItem.add($curWordBg).addClass(activeClass);
+    });
+  }
+}
+
 
 
 
@@ -267,16 +323,13 @@ function formValidation() {
   }
 }
 
-/**
- * =========== !ready document, load/resize window ===========
- */
-
-$(window).on('load', function () {
-  // add functions
+$WINDOW.on('resize', function () {
+  changeFontSize();
 });
 
-$(window).on('debouncedresize', function () {
-  // $(document.body).trigger("sticky_kit:recalc");
+$WINDOW.on('load', function () {
+  $HTML.addClass('page-loaded');
+  $('.js-p-preloader').addClass('p-preloader_hide');
 });
 
 $(document).ready(function () {
@@ -289,6 +342,7 @@ $(document).ready(function () {
   objectFitImages(); // object-fit-images initial
   // Common
   mainNavigation();
+  toggleActiveMenuItem();
 
   formValidation();
 });

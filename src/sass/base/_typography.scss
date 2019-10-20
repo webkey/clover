@@ -89,12 +89,7 @@ hr {
 a {
   color: $link-color;
   text-decoration: underline;
-  cursor: default;
   -webkit-tap-highlight-color: transparent;
-
-  &:link {
-    cursor: pointer;
-  }
 
   &:hover {
     text-decoration: none;

@@ -1,0 +1,40 @@
+@import "../utils/variables";
+@import "../utils/mixins";
+@import "../../libs/include-media/dist/include-media";
+
+.p-preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  z-index: 99999;
+  background-color: $bg-color;
+  transition: opacity 0.6s 0.2s, visibility 0.6s 0.2s;
+
+  .no-js &,
+  &.p-preloader_hide {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.p-preloader__logo {
+  width: 13rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../img/logo-short.svg);
+  background-size: contain;
+  animation: 6s tremor 0.5s ease-in-out infinite;
+  opacity: 0.65;
+
+  &::before {
+    content: "";
+    display: block;
+    @include ratio(260, 214)
+  }
+}

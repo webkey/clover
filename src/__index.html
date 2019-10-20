@@ -4,21 +4,40 @@
 })
 @@include("_tpl_layout_header.html", { "currentItem": "Home" })
 
-
+@@include("_tpl_wbg.html")
 
 <!--MAIN-->
 <main class="h-main">
   <div class="sections fp-sections-js fp-auto-height-responsive">
-    <section class="main-section case-section fp-section-js">
-      <div class="case-section__layout">
+    <section class="main-section fp-section-js">
+      <div class="main-section__layout">
         <div class="layout-page layout-page-spaces">
-          <div class="case-section__align">
-            <h1>
-              UX design
-              product
-              design
-            </h1>
-            <p>We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.</p>
+          <div class="main-section__align">
+            <div class="menu js-menu">
+              <div class="menu__list">
+                <div class="menu__item js-menu-item m-active">
+                  @@include("_tpl_menu-el.html", {
+                  "title": ["UX design", "product", "design"],
+                  "text": "We provide a full range of systems to ensure the security of state borders and perimeters. Our C4I solutions will allow you to plan, integrate and create unique border and perimeter protection systems with the management ability from a single Control Center.",
+                  "shortTitle": "UX/UI design"
+                  })
+                </div>
+                <div class="menu__item js-menu-item">
+                  @@include("_tpl_menu-el.html", {
+                  "title": ["Branding", "product", "boo"],
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam at commodi, deleniti dolorem eaque illum impedit molestiae natus nihil porro possimus quis repellat repellendus rerum similique sunt, ut",
+                  "shortTitle": "Branding"
+                  })
+                </div>
+                <div class="menu__item js-menu-item">
+                  @@include("_tpl_menu-el.html", {
+                  "title": ["Projects", "product", "woo"],
+                  "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aliquam beatae distinctio dolores earum eligendi odio pariatur quasi quia quidem quis quisquam recusandae soluta sunt veritatis, voluptates voluptatum. Praesentium, quibusdam",
+                  "shortTitle": "Projects"
+                  })
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

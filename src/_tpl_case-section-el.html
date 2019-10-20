@@ -7,7 +7,7 @@
           <h2 class="case-section__title">
           @@for (var i = 0; i < title.length; i++) {
             <span class="ct">
-              <span class="ct__inner">`+title[i]+`</span>
+              <span class="cst">`+title[i]+`</span>
             </span>
             }
           </h2>
@@ -18,19 +18,25 @@
           <h3 class="case-section__sub-title">
             @@for (var i = 0; i < subTitle.length; i++) {
             <span class="ct">
-              <span class="ct__inner">`+subTitle[i]+`</span>
+              <span class="cst">`+subTitle[i]+`</span>
             </span>
             }
           </h3>
-          <a href="#" class="case-section__more"><span class="case-section__more-text">See details</span><em class="case-section__more-arrow"></em></a>
+          <div class="case-section__more">
+            <a href="#" class="btn-more-c">
+              <i class="btn-more-c__line"></i>
+              <span class="btn-more-c__text">See details</span>
+              <em class="btn-more-c__arrow"></em>
+            </a>
+          </div>
         }
       </div>
       <div class="case-section__figure">
         <div class="case-section__figure-bg">
           <div class="case-section__figure-bg-shade"></div>
         </div>
-        @@if(context.imgSrc) {<img src="@@imgSrc" alt="image description" />}
-        @@if(context.imgSrc2) {<img src="@@imgSrc2" alt="image description" />}
+        @@if(context.imgSrc) {<img src="@@imgSrc" class="case-section__figure-img" alt="image description" />}
+        @@if(context.imgSrc2) {<img src="@@imgSrc2" class="case-section__figure-img" alt="image description" />}
       </div>
     </div>
   </div>

@@ -2,122 +2,6 @@
 @import "../utils/mixins";
 @import "../../libs/include-media/dist/include-media";
 
-/* helper classes */
-.bottom-space {
-  margin-bottom: $bottom-space;
-
-  @include media('<mob') {
-    margin-bottom: $bottom-space--mob;
-  }
-}
-
-.section-space {
-  margin-bottom: $bottom-section;
-
-  @include media('<mob') {
-    margin-bottom: $bottom-section--mob;
-  }
-}
-
-.mark {
-  color: $mark-color;
-}
-
-.align-center {
-  text-align: center;
-}
-
-.align-left {
-  text-align: left;
-}
-
-.align-right {
-  text-align: right;
-}
-
-.float-left {
-  float: left;
-}
-
-.float-right {
-  float: right;
-}
-
-.push-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.nobr {
-  white-space: nowrap;
-}
-
-.hide {
-  display: none !important;
-}
-
-.hide-text {
-  @include hide-text;
-}
-
-.desktop-only {
-  @include media("<tab") {
-    display: none;
-  }
-}
-
-.devices-only {
-  @include media(">=tab") {
-    display: none;
-  }
-}
-
-.mobile-only {
-  @include media(">=mob") {
-    display: none;
-  }
-}
-
-/* ==================================== */
-/* ======= NON CONTENT ELEMENTS ======= */
-/* ==================================== */
-/* breadcrumbs */
-.breadcrumbs {
-  color: $text-color-light;
-  margin-bottom: $bottom-space;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.breadcrumbs__list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  cursor: default;
-}
-
-.breadcrumbs__item {
-  display: inline;
-  padding-right: 0.6rem;
-  margin: 0;
-
-  &::after {
-    display: inline;
-    content: "•";
-    padding-left: 0.7em;
-  }
-
-  &:last-child {
-    &::after {
-      content: none;
-    }
-  }
-}
-
-/* breadcrumbs end */
-
 /* ==================================== */
 /* ============== HEADER ============== */
 /* ==================================== */
@@ -526,6 +410,7 @@
   a {
     color: inherit;
     text-decoration: none;
+    cursor: pointer;
 
     // ------ бутерброд -----------------------------------------
     @include media('<tab') {
@@ -927,6 +812,19 @@
   padding-bottom: 2rem;
   text-align: center;
   background-color: #fff;
+  font-size: 1.4rem;
+  line-height: 1.43;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    box-shadow: inset 0 -1px 0 transparent;
+    transition: box-shadow 0.25s;
+
+    &:hover {
+      box-shadow: inset 0 -1px 0 currentColor;
+    }
+  }
 
   &.fp-section-js {
     height: auto !important;
@@ -949,57 +847,322 @@
   background-color: rgba(whitesmoke, 0.8);
 }
 
+/* words */
+.wbg {
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  visibility: visible; // fix for safari
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.wbg__list {
+  position: relative;
+  height: 100%;
+  will-change: transform;
+}
+
+.wbg__item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  @include font-alt-extra-bold;
+  font-size: calc(30vw - 17rem);
+  line-height: 1;
+  color: #000;
+  white-space: nowrap;
+  cursor: default;
+  text-transform: uppercase;
+  transform: rotate(90deg);
+  transform-origin: left top;
+  pointer-events: none;
+  transition: margin 1.6s, opacity $animation-speed * 1.5;
+
+  &:nth-child(1) {
+    margin-left: calc(1 * (1em - 0.22em));
+    opacity: 0.1;
+    margin-top: -5rem;
+  }
+
+  &:nth-child(2) {
+    margin-left: calc(2 * (1em - 0.25em));
+    opacity: 0.08;
+    margin-top: -10vh;
+  }
+
+  &:nth-child(3) {
+    margin-left: calc(3 * (1em - 0.26em));
+    opacity: 0.06;
+    margin-top: -20vh;
+  }
+}
+
+.wbg__inner {
+  display: block;
+  position: relative;
+  will-change: transform;
+  transition: transform 0.6s cubic-bezier(0.65, 0.05, 0.36, 1);
+
+  .m-active & {
+    $translate: -5rem, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+}
+
+/* words end */
+
 /* main section */
 .main-section {
   position: relative;
+  min-height: 100%;
   padding: 0;
+  color: #131313;
 
   @include media('<tab') {
     display: block;
     height: auto !important;
     min-height: 0;
-    padding: 0;
   }
 
-  @include media('<mob') {
-    padding: 0;
+  .layout-page {
+    height: 100%;
   }
+}
+
+.main-section__layout {
+  position: relative;
+  height: 100%;
+}
+
+.main-section__align {
+  position: relative;
+  height: 100%;
 }
 
 /* main section end */
 
-/* case section */
-.case-section {
+/* menu */
+.menu {
+  position: relative;
+  height: 100%;
+}
+
+.menu__list {
+  position: relative;
   display: flex;
-  align-items: center;
-  min-height: 100%;
-  padding-top: 14rem;
-  padding-bottom: nth($layout-page-space, 1);
+  counter-reset: item;
+  height: 100%;
+}
 
-  @include media('<tab') {
-    display: block;
-    height: auto !important;
-    min-height: 0;
-    padding-top: nth($layout-page-space--tab, 1);
-    padding-bottom: nth($layout-page-space--tab, 1);
-  }
+.menu__item {
+  counter-increment: item;
+  position: static;
+  $width: $bg-word-width;
+  flex: 1 0 $width;
+  height: 100%;
+  max-width: $width;
+  pointer-events: none;
 
-  @include media('<mob') {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-
-  h1, h2, h3 {
-    color: inherit;
+  .m-active & {
+    pointer-events: auto;
   }
 }
 
-.ct {
+/* menu end */
+
+/* menu element */
+.menu-el {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: nth($section-space, 1) 2rem nth($section-space, 3) 0;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+// Full view
+.menu-el__full {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.menu-el__full-count {
+  display: block;
+  overflow: hidden;
+  //pointer-events: none;
+  margin-bottom: 2rem;
+  @include font-alt-normal;
+  font-size: 2.3rem;
+  line-height: 1;
+  will-change: opacity;
+  transition: opacity 0.7s;
+  opacity: 0;
+  pointer-events: none;
+
+  &::before {
+    content: "0"counter(item);
+    display: block;
+    position: relative;
+    @include antialiased;
+    $prop: transform;
+    will-change: $prop;
+    transition: {
+      property: $prop;
+      duration: 0.8s;
+      delay: 1.6s;
+      timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+    $translate: 0, 120%;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+
+  .s-ready & {
+    &::before {
+      $translate: 0, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+  }
+
+  .m-active & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.menu-el__full-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.menu-el__full-caption {
+  $width: 60%;
+  flex: 1 0 $width;
+  max-width: $width;
+  padding-right: 2rem;
+}
+
+.menu-el__full-title {
+  @include font-caption-bold;
+  font-size: 7.3rem;
+  $line-height: 7.5 / 7.3;
+  line-height: $line-height;
+  margin-bottom: 2rem;
+  will-change: opacity;
+  transition: opacity 0.7s;
+  opacity: 0;
+  pointer-events: none;
+
+  .m-active & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.menu-el__full-more {
+  position: relative;
+  will-change: opacity;
+  transition: opacity 0.7s;
+  opacity: 0;
+  pointer-events: none;
+
+  .m-active & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.menu-el__full-description {
+  $width: 40%;
+  flex: 1 0 $width;
+  max-width: $width;
+  @include font-caption-medium;
+  font-size: 1.8rem;
+  $line-height: 26 / 18;
+  line-height: $line-height;
+  transition: opacity 0.7s;
+  opacity: 0;
+
+  .s-ready .m-active & {
+    opacity: 1;
+  }
+}
+
+// Short view
+.menu-el__short-count {
+  display: block;
+  overflow: hidden;
+  @include font-important-semi-bold;
+  font-size: 1.5rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  transition: opacity 0.35s;
+
+  &::before {
+    display: block;
+    content: "0"counter(item);
+    @include antialiased;
+    $prop: transform;
+    will-change: $prop;
+    transition: {
+      property: $prop;
+      duration: 0.8s;
+      delay: 1.5s;
+      timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+    $translate: 0, 120%;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+
+  .s-ready & {
+    &::before {
+      $translate: 0, 0;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+  }
+}
+
+.menu-el__short-title {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 1.9rem;
+  $line-height: 2.2 / 1.9;
+  line-height: $line-height;
+}
+
+.menu-el__short-inner {
+  display: block;
+  $prop: transform;
+  will-change: $prop;
+  transition: {
+    property: $prop;
+    duration: 0.5s;
+    timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+  }
+}
+
+.st {
   display: block;
   overflow: hidden;
 }
 
-.ct__inner {
+.sst {
   display: block;
   position: relative;
   @include antialiased;
@@ -1007,11 +1170,141 @@
   will-change: $prop;
   transition: {
     property: $prop;
-    duration: 1.2s;
-    delay: 0.4s;
+    duration: 1.0s;
+    delay: 1.2s;
     timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
   }
   $translate: 0, 102%;
+  transform: translate($translate);
+  transform: translate3d($translate, 0);
+
+  .s-ready & {
+    $translate: 0, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+}
+
+.menu-el__short-line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.7s 1.2s;
+
+  .s-ready & {
+    opacity: 1;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    $height: 0.5rem;
+    height: $height;
+    margin-top: -#{$height / 2};
+    background-color: currentColor;
+    $prop: transform;
+    will-change: $prop;
+    transition: {
+      property: $prop;
+      duration: 0.5s;
+      timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+    $translate: -102%, 0;
+    transform: translate($translate);
+    transform: translate3d($translate, 0);
+  }
+}
+
+.menu-el__short {
+  display: block;
+  position: relative;
+  margin-top: auto;
+  cursor: default;
+  color: inherit;
+  text-decoration: none;
+  pointer-events: auto;
+
+  // Hover & current
+  .no-touchevents &:hover,
+  .m-active & {
+    .menu-el__short-count {
+      opacity: 0;
+    }
+
+    .menu-el__short-inner {
+      $translate: 0, -60%;
+      $scale: 1, 1;
+      transform: translate($translate);
+      transform: translate3d($translate, 0);
+    }
+
+    .menu-el__short-line {
+      &::before {
+        transition-delay: 0.3s;
+        $translate: 0, 0;
+        transform: translate($translate);
+        transform: translate3d($translate, 0);
+      }
+    }
+  }
+}
+
+/* menu element end */
+
+/* case section */
+.case-section {
+  display: flex;
+  align-items: center;
+  min-height: 100%;
+  padding-top: nth($section-space, 1);
+  padding-bottom: nth($section-space, 3);
+
+  h1, h2, h3 {
+    color: inherit;
+  }
+}
+
+.case-section__layout {
+  flex: 1 0 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+.case-section__align {
+  display: flex;
+  align-items: center;
+}
+
+.ct,
+.mt {
+  display: block;
+  overflow: hidden;
+  padding: 0 0 1rem;
+  margin: 0 0 -1rem;
+}
+
+.cst,
+.mst {
+  display: block;
+  position: relative;
+  @include antialiased;
+  $prop: transform;
+  will-change: $prop;
+  transition: {
+    property: $prop;
+    duration: 1.0s;
+    delay: 0.8s;
+    timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+  }
+  $translate: 0, 120%;
   transform: translate($translate);
   transform: translate3d($translate, 0);
 
@@ -1036,10 +1329,16 @@
   bottom: 100%;
   margin: 0 0 1rem;
   color: #919191;
+  transition: opacity 0.6s 1.5s;
+  opacity: 0;
+
+  .s-ready & {
+    opacity: 1;
+  }
 }
 
 .case-section__title {
-  @include font-title-bold;
+  @include font-caption-bold;
   font-size: 7.3rem;
   line-height: 7.5rem;
 }
@@ -1059,57 +1358,8 @@
 }
 
 .case-section__more {
-  $height: 0.4rem;
-  // ----------------------------------------------------
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
   width: 19.3rem;
-  height: $height;
-  color: #d8d8d8;
-
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 50%;
-    width: 14.3rem;
-    height: $height;
-    margin-top: -#{$height / 2};
-    border-radius: $height;
-    background-color: currentColor;
-  }
-}
-
-.case-section__more-text {
-  @include hide-text;
-}
-
-.case-section__more-arrow {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  $size: 2.4rem;
-  height: $size;
-  width: $size;
-  margin-top: -#{$size / 2};
-  border-radius: $size;
-  background-color: currentColor;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNSAzbDMuMDU3LTMgMTEuOTQzIDEyLTExLjk0MyAxMi0zLjA1Ny0zIDktOXoiPjwvcGF0aD48L3N2Zz4=);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: auto 1.2rem;
-}
-
-.case-section__layout {
-  flex: 1 0 100%;
-  width: 100%;
   max-width: 100%;
-}
-
-.case-section__align {
-  display: flex;
-  align-items: center;
 }
 
 .case-section__figure {
@@ -1122,15 +1372,6 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-
-  img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    max-height: 100%;
-    max-width: 100%;
-    transform: translate(-50%, -50%);
-  }
 }
 
 .case-section__figure-bg {
@@ -1171,6 +1412,35 @@
     $scale: 1, 1;
     transform: scale($scale);
     transform: scale3d($scale, 1);
+  }
+}
+
+.case-section__figure-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  max-height: 100%;
+  max-width: 100%;
+  opacity: 0;
+  $prop: transform, opacity;
+  will-change: $prop;
+  transition: {
+    property: $prop;
+    duration: 0.85s;
+    delay: 0.8s;
+    timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+  }
+  $translate: -50%, -50%;
+  $scale: 0.85, 0.85;
+  transform: translate($translate) scale($scale);
+  transform: translate3d($translate, 0) scale3d($scale, 1);
+
+  .s-ready & {
+    opacity: 1;
+    $translate: -50%, -50%;
+    $scale: 1, 1;
+    transform: translate($translate) scale($scale);
+    transform: translate3d($translate, 0) scale3d($scale, 1);
   }
 }
 

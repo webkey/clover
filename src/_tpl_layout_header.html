@@ -1,3 +1,9 @@
+<div class="p-preloader js-p-preloader">
+  <div class="p-preloader__content">
+    <div class="p-preloader__logo"></div>
+  </div>
+</div>
+
 <!--HEADER-->
 <header class="header">
   <div class="layout-page layout-page-spaces">
@@ -26,7 +32,6 @@
           </div>
           <nav class="nav">
             <ul class="nav__list nav-js">
-              @@if(context.currentItem == 'Home'){<li class="current"><span>Home</span></li>}
               @@if(context.currentItem != 'Home'){<li><a href="index.html">Home</a></li>}
 
               @@if(context.currentItem == 'About'){<li class="current"><span>About</span></li>}
