@@ -164,6 +164,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'src/libs/swiper/dist/js/swiper.min.js' // swiper
     , 'src/js/temp/jquery.nav.js' // nav
     , 'src/js/temp/jquery.switch-class.js' // switch class
+    , 'node_modules/mobile-detect/mobile-detect.min.js' // mobile detect
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

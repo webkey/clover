@@ -3,32 +3,32 @@
 @import "../../libs/include-media/dist/include-media";
 
 .btn-more-c {
-  $height: 2.4rem;
+  $height: 2.6rem;
   height: $height;
   position: relative;
   display: block;
-  color: #d8d8d8;
 }
 
 .btn-more-c__line {
   position: absolute;
   left: 0;
   overflow: hidden;
-  width: 14.3rem;
+  width: 14.5rem;
   height: 100%;
 
-  &::before {
-    content: "";
+  &-inner {
+    $height: 0.6rem;
+    $translate: -102%, 0;
+
     display: block;
     position: absolute;
     left: 0;
     top: 50%;
     width: 100%;
-    $height: 0.4rem;
-    height: $height;
+    height: $height - 0.2;
     margin-top: -#{$height / 2};
     border-radius: $height;
-    background-color: currentColor;
+    background-color: white;
     $prop: transform;
     will-change: $prop;
     transition: {
@@ -37,13 +37,16 @@
       delay: 1.2s;
       timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
     }
-    $translate: -102%, 0;
     transform: translate($translate);
     transform: translate3d($translate, 0);
 
+    &_light-gray {
+      background-color: #d8d8d8;
+    }
+
     .s-ready & {
       $translate: 0, 0;
-      $translate: 0, 0;
+
       transform: translate($translate);
       transform: translate3d($translate, 0);
     }
@@ -51,23 +54,27 @@
 }
 
 .btn-more-c__text {
+  color: white;
   @include hide-text;
+
+  &_light-gray {
+    color: #d8d8d8;
+  }
 }
 
 .btn-more-c__arrow {
+  $size: 2.4rem;
+
   position: absolute;
   top: 50%;
-  right: 0;
-  $size: 2.4rem;
+  right: 0.2rem;
   height: $size;
   width: $size;
   margin-top: -#{$size / 2};
-  border-radius: $size;
-  background-color: currentColor;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNSAzbDMuMDU3LTMgMTEuOTQzIDEyLTExLjk0MyAxMi0zLjA1Ny0zIDktOXoiPjwvcGF0aD48L3N2Zz4=);
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjMiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAyMyAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIzIDExLjVDMjMgMTcuODUxMyAxNy44NTEzIDIzIDExLjUgMjNDNS4xNDg3MyAyMyAwIDE3Ljg1MTMgMCAxMS41QzAgNS4xNDg3MyA1LjE0ODczIDAgMTEuNSAwQzE3Ljg1MTMgMCAyMyA1LjE0ODczIDIzIDExLjVaTTkuMzEzODIgMTYuOTU1N0M4LjkxMjA3IDE2LjU3NjcgOC44OTM2IDE1Ljk0MzggOS4yNzI1NyAxNS41NDIxTDEzLjA4NTYgMTEuNDk5OEw5LjI5Mjg5IDcuNzA3MTFDOC45MDIzNyA3LjMxNjU4IDguOTAyMzcgNi42ODM0MiA5LjI5Mjg5IDYuMjkyODlDOS42ODM0MiA1LjkwMjM3IDEwLjMxNjYgNS45MDIzNyAxMC43MDcxIDYuMjkyODlMMTUuMTg2NiAxMC43NzI0QzE1LjU2OTEgMTEuMTU0OSAxNS41NzgxIDExLjc3MjIgMTUuMjA2OSAxMi4xNjU3TDEwLjcyNzQgMTYuOTE0NUMxMC4zNDg1IDE3LjMxNjIgOS43MTU1NyAxNy4zMzQ3IDkuMzEzODIgMTYuOTU1N1oiIGZpbGw9IndoaXRlIi8+PC9zdmc+);
+  background-position: center;
   background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: auto 1.2rem;
+  background-size: cover;
   $prop: transform;
   will-change: $prop;
   transition: {
@@ -77,21 +84,18 @@
     timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
   }
   $scale: 0, 0;
+
   transform: scale($scale);
   transform: scale3d($scale, 1);
 
+  &_light-gray {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjMiIGhlaWdodD0iMjMiIHZpZXdCb3g9IjAgMCAyMyAyMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIzIDExLjVDMjMgMTcuODUxMyAxNy44NTEzIDIzIDExLjUgMjNDNS4xNDg3MyAyMyAwIDE3Ljg1MTMgMCAxMS41QzAgNS4xNDg3MyA1LjE0ODczIDAgMTEuNSAwQzE3Ljg1MTMgMCAyMyA1LjE0ODczIDIzIDExLjVaTTkuMzEzODIgMTYuOTU1N0M4LjkxMjA3IDE2LjU3NjcgOC44OTM2IDE1Ljk0MzggOS4yNzI1NyAxNS41NDIxTDEzLjA4NTYgMTEuNDk5OEw5LjI5Mjg5IDcuNzA3MTFDOC45MDIzNyA3LjMxNjU4IDguOTAyMzcgNi42ODM0MiA5LjI5Mjg5IDYuMjkyODlDOS42ODM0MiA1LjkwMjM3IDEwLjMxNjYgNS45MDIzNyAxMC43MDcxIDYuMjkyODlMMTUuMTg2NiAxMC43NzI0QzE1LjU2OTEgMTEuMTU0OSAxNS41NzgxIDExLjc3MjIgMTUuMjA2OSAxMi4xNjU3TDEwLjcyNzQgMTYuOTE0NUMxMC4zNDg1IDE3LjMxNjIgOS43MTU1NyAxNy4zMzQ3IDkuMzEzODIgMTYuOTU1N1oiIGZpbGw9IiNEOEQ4RDgiLz48L3N2Zz4=);
+  }
+
   .s-ready & {
     $scale: 1, 1;
+
     transform: scale($scale);
     transform: scale3d($scale, 1);
-  }
-}
-
-// Hover
-.btn-more-c {
-  .no-touchevents &:hover {
-    .btn-more-c__arrow {
-
-    }
   }
 }

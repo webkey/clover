@@ -2,9 +2,9 @@
   <div class="layout-page layout-page-spaces">
     <div class="case-section__align">
       <div class="case-section__caption">
-        @@if(context.count) {<div class="case-section__count">@@count</div>}
+        @@if(context.count) {<div class="case-section__count@@if(context.countMod){ case-section__count_@@countMod}">@@count</div>}
         @@if(context.title) {
-          <h2 class="case-section__title">
+          <h2 class="case-section__title@@if(context.titleMod){ case-section__title_@@titleMod}">
           @@for (var i = 0; i < title.length; i++) {
             <span class="ct">
               <span class="cst">`+title[i]+`</span>
@@ -23,20 +23,31 @@
             }
           </h3>
           <div class="case-section__more">
-            <a href="#" class="btn-more-c">
-              <i class="btn-more-c__line"></i>
-              <span class="btn-more-c__text">See details</span>
-              <em class="btn-more-c__arrow"></em>
+            <a href="#" class="btn-more-c btn-next-section-js">
+              <div class="btn-more-c__line">
+                <div class="btn-more-c__line-inner@@if(context.btnMoreLineMod){ btn-more-c__line-inner_@@btnMoreLineMod}"></div>
+              </div>
+              <div class="btn-more-c__text@@if(context.btnMoreTextMod){ btn-more-c__text_@@btnMoreTextMod}">See details</div>
+              <div class="btn-more-c__arrow@@if(context.btnMoreArrowMod){ btn-more-c__arrow_@@btnMoreArrowMod}"></div>
             </a>
           </div>
         }
       </div>
       <div class="case-section__figure">
         <div class="case-section__figure-bg">
-          <div class="case-section__figure-bg-shade"></div>
+          @@if(!context.complexShade) {
+          <div class="case-section__figure-shade"></div>
+          }
+          @@if(context.complexShade) {
+          <div class="case-section__figure-zebra">
+            <div class="case-section__figure-zebra-l1"></div>
+            <div class="case-section__figure-zebra-l2"></div>
+            <div class="case-section__figure-zebra-l3"></div>
+          </div>
+          }
         </div>
-        @@if(context.imgSrc) {<img src="@@imgSrc" class="case-section__figure-img" alt="image description" />}
-        @@if(context.imgSrc2) {<img src="@@imgSrc2" class="case-section__figure-img" alt="image description" />}
+        @@if(context.imgSrc1) {<div class="case-section__figure-img"><img src="@@imgSrc1" alt="image description" /></div>}
+        @@if(context.imgSrc2) {<div class="case-section__figure-img"><img src="@@imgSrc2" alt="image description" /></div>}
       </div>
     </div>
   </div>

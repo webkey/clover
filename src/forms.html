@@ -52,19 +52,17 @@
   <header class="header">
     <div class="layout-page layout-page-spaces">
       <div class="header-container">
-        <!--logo-->
-        <div class="logo">
-          <div class="logo_dark"></div>
-          <div class="logo_light"></div>
-          <a href="index.html" title="Go home"><span>Clover Nikhola Khlusov Studio</span></a>
-          <!--logo for a print version-->
-          <img style="display: none;" src="img/logo.svg" alt="Print version logotype">
+        <div class="header-container__left">
+          <div class="logo">
+            <div class="logo_dark"></div>
+            <div class="logo_light"></div>
+            <a href="index.html" title="Go home"><span>Clover Nikhola Khlusov Studio</span></a>
+            <!--logo for a print version-->
+            <img style="display: none;" src="img/logo.svg" alt="Print version logotype">
+          </div>
         </div>
-        <!--logo end-->
-        <!--header add elements-->
-        <div class="hc-right">
+        <div class="header-container__right">
           <a href="#mainNav" class="nav-opener nav-opener-js">Open menu</a>
-          <!--navigation-->
           <div class="nav-wrap" id="mainNav">
             <div class="nav-header">
               <a href="index.html" class="logo-nav" title="Clover Nikhola Khlusov Studio">Clover Nikhola Khlusov Studio</a>
@@ -75,25 +73,14 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="work.html">Work</a></li>
-                <!--<em>&#9660;</em>
-                <ul>
-                  <li><a href="work-inner.html">News inner 1</a></li>
-                  <li class="current"><a href="work-inner.html">News inner 2</a></li>
-                  <li><a href="work-inner.html">News inner 3</a></li>
-                </ul>
-              </li>-->
               </ul>
             </nav>
           </div>
           <div class="nav-overlay"></div>
-          <!--navigation end-->
-          <!--lang-->
-          <div class="lang">
-            <a href="#"><span>Ru</span></a>
-          </div>
-          <!--lang end-->
         </div>
-        <!--header add elements end-->
+        <div class="lang">
+          <a class="lang__inner" href="#"><span>Ru</span></a>
+        </div>
       </div>
     </div>
   </header>
@@ -932,7 +919,7 @@
     </div>
   </main>
   <!--FOOTER-->
-  <footer class="footer" @@if(context.dataTheme){ data-theme="@@dataTheme">
+  <footer class="footer">
     <div class="layout-page layout-page-spaces">
       <span class="copyright">&copy; <a href="index.html">Clover Nikhola Khlusov Studio</a> 2019</span>
     </div>

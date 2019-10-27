@@ -47,22 +47,22 @@ body {
   };
 
   // ------ tab -----------------------------------------
-  @include media('<tab') {
-    $intend: nth($layout-page-space--tab, 2);
-    padding: {
-      left: $intend;
-      right: $intend;
-    };
-  }
+  //@include media('<tab') {
+  //  $intend: nth($layout-page-space--tab, 2);
+  //  padding: {
+  //    left: $intend;
+  //    right: $intend;
+  //  };
+  //}
 
   // ------ mob -----------------------------------------
-  @include media('<mob') {
-    $intend: nth($layout-page-space--mob, 2);
-    padding: {
-      left: $intend;
-      right: $intend;
-    };
-  }
+  //@include media('<mob') {
+  //  $intend: nth($layout-page-space--mob, 2);
+  //  padding: {
+  //    left: $intend;
+  //    right: $intend;
+  //  };
+  //}
 }
 
 // Выравнивание сайта и его максимальная ширина
@@ -88,22 +88,22 @@ body {
   };
 
   // ------ tab -----------------------------------------
-  @include media('<tab') {
-    $intend: nth($layout-text-space--tab, 2);
-    padding: {
-      left: $intend;
-      right: $intend;
-    };
-  }
+  //@include media('<tab') {
+  //  $intend: nth($layout-text-space--tab, 2);
+  //  padding: {
+  //    left: $intend;
+  //    right: $intend;
+  //  };
+  //}
 
   // ------ mob -----------------------------------------
-  @include media('<mob') {
-    $intend: nth($layout-text-space--mob, 2);
-    padding: {
-      left: $intend;
-      right: $intend;
-    };
-  }
+  //@include media('<mob') {
+  //  $intend: nth($layout-text-space--mob, 2);
+  //  padding: {
+  //    left: $intend;
+  //    right: $intend;
+  //  };
+  //}
 }
 
 // Выравнивание текстовых элементов и их максимальная ширина

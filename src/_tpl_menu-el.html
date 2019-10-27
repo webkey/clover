@@ -1,36 +1,38 @@
 <div class="menu-el">
   <div class="menu-el__full">
-    <span class="menu-el__full-count"></span>
-    <div class="menu-el__full-content">
-      <div class="menu-el__full-caption">
-        @@if(context.title) {
-        <div class="menu-el__full-title">
-          <a href="#">
-            @@for (var i = 0; i < title.length; i++) {
-            <span class="mt">
-              <span class="mst">`+title[i]+`</span>
-            </span>
-            }
-          </a>
+    <div class="menu-el__full-align">
+      <span class="menu-el__full-count"></span>
+      <div class="menu-el__full-content">
+        <div class="menu-el__full-caption">
+          @@if(context.title) {
+          <div class="menu-el__full-title">
+            <a href="inner.html">
+              @@for (var i = 0; i < title.length; i++) {
+              <span class="mt">
+                <span class="mst">`+title[i]+`</span>
+              </span>
+              }
+            </a>
+          </div>
+          }
+          <div class="menu-el__full-more">
+            <a href="inner.html" class="btn-more-m">
+              <span class="btn-more-m__text"><span class="btn-more-m__text-inner">Read more</span></span>
+              <i class="btn-more-m__line"></i>
+            </a>
+          </div>
         </div>
+        @@if(context.text) {
+        <div class="menu-el__full-description">@@text</div>
         }
-        <div class="menu-el__full-more">
-          <a href="#" class="btn-more-m">
-            <span class="btn-more-m__text"><span class="btn-more-m__text-inner">Read more</span></span>
-            <i class="btn-more-m__line"></i>
-          </a>
-        </div>
       </div>
-      @@if(context.text) {
-      <div class="menu-el__full-description">@@text</div>
-      }
     </div>
   </div>
-  <a href="#" class="menu-el__short js-menu-anchor">
+  <div class="menu-el__short js-menu-anchor">
     <span class="menu-el__short-count"></span>
     <div class="menu-el__short-title">
       <div class="menu-el__short-inner"><span class="st"><span class="sst">@@shortTitle</span></span></div>
       <div class="menu-el__short-line"></div>
     </div>
-  </a>
+  </div>
 </div>

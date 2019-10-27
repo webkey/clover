@@ -3,20 +3,22 @@
 // =============================================================================
 // Google Fonts
 // =============================================================================
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto:400,400i,700,700i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Roboto&display=swap');
 
 // =============================================================================
 // Font Face
 // =============================================================================
-// Circe
-// ----------------------------------------------------
-@include font-face("circe-regular", "../fonts/Circe-Regular", normal, normal, ttf);
-@include font-face("circe-bold", "../fonts/Circe-Bold", normal, normal, ttf);
-@include font-face("circe-extra-bold", "../fonts/Circe-ExtraBold", normal, normal, ttf);
 
 // Avenir Next
 // ----------------------------------------------------
-@include font-face("avenir-roman", "../fonts/Avenir-Roman", normal, normal, ttf);
-@include font-face("avenir-next-cyr-bold", "../fonts/AvenirNextCyr-Bold", normal, normal, ttf);
-@include font-face("avenir-next-cyr-demi", "../fonts/AvenirNextCyr-Demi", normal, normal, ttf);
-@include font-face("avenir-next-cyr-medium", "../fonts/AvenirNextCyr-Medium", normal, normal, ttf);
+@include font-face("avenir-next-cyr-medium", "../fonts/AvenirNextCyr/AvenirNextCyr-Medium", normal, normal, eot ttf woff);
+@include font-face("avenir-next-cyr-medium-italic", "../fonts/AvenirNextCyr/AvenirNextCyr-MediumItalic", normal, normal, eot ttf woff);
+@include font-face("avenir-next-cyr-bold", "../fonts/AvenirNextCyr/AvenirNextCyr-Bold", normal, normal, eot ttf woff);
+@include font-face("avenir-next-cyr-bold-italic", "../fonts/AvenirNextCyr/AvenirNextCyr-BoldItalic", normal, normal, eot ttf woff);
+@include font-face("avenir-next-cyr-demi", "../fonts/AvenirNextCyr/AvenirNextCyr-Demi", normal, normal, eot ttf woff);
+
+// Circe
+// ----------------------------------------------------
+@include font-face("circe-regular", "../fonts/Circe/Circe-Regular", normal, normal, ttf);
+@include font-face("circe-bold", "../fonts/Circe/Circe-Bold", normal, normal, ttf);
+@include font-face("circe-extra-bold", "../fonts/Circe/Circe-ExtraBold", normal, normal, ttf);

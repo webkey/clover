@@ -25,31 +25,48 @@ $breakpoints: (
 
 // Main font
 // ----------------------------------------------------
-$font-norm: "Roboto", Helvetica, Arial, sans-serif !default;
-$font-bold: $font-norm !default;
-$font-bold-italic: $font-norm !default;
-$font-italic: $font-norm !default;
+$font-norm: "avenir-next-cyr-medium", Helvetica, Arial, sans-serif !default;
+$font-italic: "avenir-next-cyr-medium-italic", Helvetica, Arial, sans-serif !default;
+$font-bold: "avenir-next-cyr-bold", Helvetica, Arial, sans-serif !default;
+$font-bold-italic: "avenir-next-cyr-bold-italic", Helvetica, Arial, sans-serif !default;
+$font-demi: "avenir-next-cyr-demi", Helvetica, Arial, sans-serif !default;
 
 @mixin font-normal {
   font-family: $font-norm;
-  font-weight: 400;
 }
 
 @mixin font-bold {
   font-family: $font-bold;
-  font-weight: 700;
+  font-weight: normal;
 }
 
 @mixin font-italic {
   font-family: $font-italic;
-  font-style: italic;
+  font-style: normal;
 }
 
 @mixin font-bold-italic {
   font-family: $font-bold-italic;
-  font-weight: 700;
-  font-style: italic;
+  font-weight: normal;
+  font-style: normal;
 }
+
+@mixin font-demi {
+  font-family: $font-demi;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+// Alternative font
+// ----------------------------------------------------
+$font-roboto-norm: "Roboto", Helvetica, Arial, sans-serif !default;
+
+@mixin font-roboto-normal {
+  font-family: $font-roboto-norm;
+  font-weight: 400;
+}
+
 
 // Alternative font
 // ----------------------------------------------------
@@ -68,32 +85,6 @@ $font-alt-extra-bold: "circe-extra-bold", Helvetica, Arial, sans-serif !default;
 
 @mixin font-alt-extra-bold {
   font-family: $font-alt-extra-bold;
-  font-weight: normal;
-}
-
-// Title font
-// ----------------------------------------------------
-$font-title-normal: "avenir-roman", Helvetica, Arial, sans-serif !default;
-$font-title-bold: "avenir-next-cyr-bold", Helvetica, Arial, sans-serif !default;
-$font-title-demi: "avenir-next-cyr-demi", Helvetica, Arial, sans-serif !default;
-$font-title-medium: "avenir-next-cyr-medium", Helvetica, Arial, sans-serif !default;
-
-@mixin font-caption-normal {
-  font-family: $font-title-normal;
-}
-
-@mixin font-caption-bold {
-  font-family: $font-title-bold;
-  font-weight: normal;
-}
-
-@mixin font-caption-demi {
-  font-family: $font-title-demi;
-  font-weight: normal;
-}
-
-@mixin font-caption-medium {
-  font-family: $font-title-medium;
   font-weight: normal;
 }
 
@@ -122,7 +113,7 @@ $font-important-bold: $font-important-normal !default;
 // Base font size
 // ====================================================
 $font-size: 1.8rem !default;
-$line-height: 2.7rem !default;
+$line-height: 2.6rem !default;
 $letter-spacing: normal !default;
 // ------ mob -----------------------------------------
 $font-size--mob: 1.6rem !default;
@@ -131,8 +122,8 @@ $line-height--mob: 2.4rem !default;
 
 // Heading h1
 // ====================================================
-$font-size-h1: 4.2rem !default;
-$line-height-h1: 5.2rem !default;
+$font-size-h1: 3.6rem !default;
+$line-height-h1: 3.8rem !default;
 $line-height-h1-kef: $line-height-h1 / $font-size-h1;
 // ------ tab -----------------------------------------
 $font-size-h1--tab: 3.4rem !default;
@@ -288,7 +279,7 @@ $text-color-invert: white !default;
 $text-color-muted: #6c757d !default;
 $text-color-light: #ccc !default;
 // ----------------------------------------------------
-$title-color: #000 !default;
+$title-color: #131313 !default;
 // ----------------------------------------------------
 $border-color: #ccc !default;
 // ----------------------------------------------------
@@ -310,7 +301,7 @@ $layout-page-space--mob: 1.3rem 1rem !default;
 // Layout text
 // ====================================================
 // Ширина текстового блока
-$layout-text-width: 80rem !default;
+$layout-text-width: 87rem !default;
 // Отступы текствого блока
 $layout-text-space: #{nth($layout-page-space, 1)} #{nth($layout-page-space, 2)} !default;
 $layout-text-space--tab: #{nth($layout-page-space--tab, 1)} #{nth($layout-page-space--tab, 2)} !default;
@@ -624,5 +615,3 @@ $nav-height--mob: 6rem !default;
 // Content
 // ====================================================
 $bg-word-width: 19rem !default;
-
-$section-space: 14rem 0 3rem !default;

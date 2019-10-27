@@ -15,10 +15,10 @@ body {
 // ----------------------------------------------------
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  margin: 0 0 $bottom-space;
+  margin: 0 0 2.4rem;
   padding: 0;
 
-  @include font-normal;
+  @include font-bold;
   font-weight: normal;
   color: $title-color;
 
@@ -66,7 +66,7 @@ h6, .h6 {
 // ----------------------------------------------------
 p, pre {
   padding: 0;
-  margin: 0 0 $bottom-space;
+  margin: 0 0 1.6rem;
 
   &:last-child {
     margin-bottom: 0;
@@ -251,7 +251,7 @@ table {
   h4, .h4,
   h5, .h5,
   h6, .h6 {
-    margin-top: round-float(2.6 * $bottom-space, 1);
+    margin-top: 4.5rem;
 
     &:first-child {
       margin-top: 0;
@@ -262,7 +262,7 @@ table {
   figure {
     display: block;
     padding: 0;
-    margin: 5.3rem 0 5rem;
+    margin: 3.3rem auto 3.5rem;
 
     img {
       display: block;
@@ -414,7 +414,7 @@ table {
   .layout-flood {
     & > img {
       display: block;
-      margin: #{round-float($bottom-space * 1.25, 1)} auto #{round-float($bottom-space * 1.67, 1)};
+      margin: 3.3rem auto 3.5rem;
       max-width: 100%;
       height: auto;
       text-align: center;
@@ -461,34 +461,3 @@ table {
 }
 
 /* typography elements end */
-
-/* article content */
-.article-content {
-  & > p,
-  & > hr,
-  & > mark,
-  & > ul, & > ol,
-  & > h1, & > .h1,
-  & > h2, & > .h2,
-  & > h3, & > .h3,
-  & > h4, & > .h4,
-  & > h5, & > .h5,
-  & > h6, & > .h6,
-  & > blockquote,
-  & > figure,
-  & > table,
-  & > .table-auto,
-  & > .layout-text {
-    max-width: $layout-text-width;
-
-    @include push-auto;
-  }
-
-  & > .layout-flood {
-    max-width: $layout-text-width;
-
-    @include push-auto;
-  }
-}
-
-/* article content end */
