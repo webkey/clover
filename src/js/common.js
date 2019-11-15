@@ -79,10 +79,24 @@ function fullPageInitial() {
 
     function sectionVisible(destination) {
       var $section = $(destination.item);
-      $fpSections.removeClass('s-visible')
+      $fpSections.removeClass('s-visible');
       $section.addClass('s-visible');
       if(destination.isLast) {
         $section.prev().addClass('s-visible');
+      }
+    }
+
+    function toggleLogoTheme(destination) {
+      var $section = $(destination.item);
+
+      $HTML.removeClass('logo-theme-light');
+
+      if (!$HTML.hasClass('logo-theme-light') && $section.attr('data-logo-theme') === "light") {
+        $HTML.addClass('logo-theme-light');
+      }
+
+      if(destination.isLast && $section.prev().attr('data-logo-theme') === "light") {
+        $HTML.addClass('logo-theme-light');
       }
     }
 
@@ -113,11 +127,7 @@ function fullPageInitial() {
         }
 
         // Добавлять класс светлой темы
-        $HTML.removeClass('theme-light');
-
-        if (!$HTML.hasClass('theme-light') && $(destination.item).attr('data-theme') === "light") {
-          $HTML.addClass('theme-light');
-        }
+        toggleLogoTheme(destination);
 
         // Менять цвет фона
         var bgColor = $(destination.item).attr('data-bg-color');
@@ -348,7 +358,6 @@ $WINDOW.on('load', function () {
   $HTML.addClass('page-loaded');
   $('.js-p-preloader').addClass('p-preloader_hide');
   $('.js-article').addClass('article-ready');
-  $('.js-contacts').addClass('contacts-ready');
 });
 
 $(document).ready(function () {
